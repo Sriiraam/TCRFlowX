@@ -31,3 +31,19 @@ __pycache__/
 # Editors / OS
 .vscode/
 .DS_Store.venv/
+
+# Local Python environment
+.venv/
+
+# Local reference / author processed data
+data/reference/
+
+# Generated results
+results/
+
+# Nextflow work directory
+work/
+
+# Nextflow cache/log
+.nextflow/
+.nextflow.log*
