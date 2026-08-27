@@ -1,0 +1,26 @@
+# Raw sequencing data
+data/raw/*
+*.fastq
+*.fastq.gz
+*.sra
+
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+.nextflow.cache/
+
+# Generated results
+results/
+
+# Python
+__pycache__/
+*.pyc
+
+# R
+.Rhistory
+.RData
+
+# OS/editor
+.DS_Store
+.vscode/

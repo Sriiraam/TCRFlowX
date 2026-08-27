@@ -1,0 +1,6 @@
+sample_id,run_accession,geo_sample,tissue,timepoint,clinical_state,pd1_status
+PBMC_PRE,SRR39393489,GSM9848698,PBMC,1,pre-treatment,pre-pd1i
+TUMOR_PRE,SRR39393488,GSM9848699,lymphoid_tissue,1,pre-treatment,pre-pd1i
+PBMC_RELAPSE,SRR39393487,GSM9848700,PBMC,4,relapse,off-pd1i
+PBMC_PROGRESSION,SRR39393486,GSM9848701,PBMC,6,progressive_disease,on-pd1i
+TUMOR_PROGRESSION,SRR39393485,GSM9848702,lymphoid_tissue,6,progressive_disease,on-pd1i
