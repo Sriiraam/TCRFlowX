@@ -1,17 +1,23 @@
 # Raw sequencing data
 data/raw/*
+!data/raw/.gitkeep
+*.sra
 *.fastq
 *.fastq.gz
-*.sra
+
+# Processed/generated data
+data/processed/*
+results/
 
 # Nextflow
 work/
 .nextflow/
 .nextflow.log*
-.nextflow.cache/
 
-# Generated results
-results/
+# Local software/binaries
+mixcr/
+*.jar
+*.zip
 
 # Python
 __pycache__/
@@ -21,6 +27,5 @@ __pycache__/
 .Rhistory
 .RData
 
-# OS/editor
-.DS_Store
+# Editors
 .vscode/

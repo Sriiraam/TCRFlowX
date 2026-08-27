@@ -1,6 +1,6 @@
-sample_id,run_accession,geo_sample,tissue,timepoint,clinical_state,pd1_status
-PBMC_PRE,SRR39393489,GSM9848698,PBMC,1,pre-treatment,pre-pd1i
-TUMOR_PRE,SRR39393488,GSM9848699,lymphoid_tissue,1,pre-treatment,pre-pd1i
-PBMC_RELAPSE,SRR39393487,GSM9848700,PBMC,4,relapse,off-pd1i
-PBMC_PROGRESSION,SRR39393486,GSM9848701,PBMC,6,progressive_disease,on-pd1i
-TUMOR_PROGRESSION,SRR39393485,GSM9848702,lymphoid_tissue,6,progressive_disease,on-pd1i
+sample_id,run_accession,biosample,geo_sample,tissue,timepoint,clinical_state,pd1_status,assay,receptor_chain,layout
+PBMC_PRE,SRR39393489,SAMN61219417,GSM9848698,PBMC,1,pre_treatment,pre_pd1i,TCR_seq,TRB,PAIRED
+TUMOR_PRE,SRR39393488,SAMN61219416,GSM9848699,lymphoid_tissue,1,pre_treatment,pre_pd1i,TCR_seq,TRB,PAIRED
+PBMC_RELAPSE,SRR39393487,SAMN61219415,GSM9848700,PBMC,4,relapse,off_pd1i,TCR_seq,TRB,PAIRED
+PBMC_PROGRESSION,SRR39393486,SAMN61219414,GSM9848701,PBMC,6,progressive_disease,on_pd1i,TCR_seq,TRB,PAIRED
+TUMOR_PROGRESSION,SRR39393485,SAMN61219413,GSM9848702,lymphoid_tissue,6,progressive_disease,on_pd1i,TCR_seq,TRB,PAIRED
