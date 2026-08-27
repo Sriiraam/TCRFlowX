@@ -2,9 +2,11 @@
 
 nextflow.enable.dsl = 2
 
-include { FASTQC }  from './modules/fastqc'
-include { MULTIQC } from './modules/multiqc'
-include { MIXCR }   from './modules/mixcr'
+include { FASTQC }              from './modules/fastqc'
+include { MULTIQC }             from './modules/multiqc'
+include { MIXCR }               from './modules/mixcr'
+include { REPERTOIRE_ANALYSIS } from './modules/repertoire_analysis'
+include { BIOLOGICAL_SUMMARY }  from './modules/biological_summary'
 
 workflow {
 
@@ -41,7 +43,7 @@ workflow {
         }
 
     /*
-     * Raw sequencing QC
+     * Raw QC
      */
     FASTQC(ch_samples)
 
@@ -53,7 +55,26 @@ workflow {
     MULTIQC(ch_multiqc_input)
 
     /*
-     * TCRβ repertoire reconstruction
+     * MiXCR
      */
     MIXCR(ch_samples)
+
+    /*
+     * Collect TRB clonotype files only AFTER MIXCR runs
+     */
+    ch_trb_clones = MIXCR.out.clones
+        .map { meta, clones -> clones }
+        .collect()
+
+    /*
+     * Repertoire analysis
+     */
+    REPERTOIRE_ANALYSIS(ch_trb_clones)
+
+    /*
+     * Biological interpretation
+     */
+    BIOLOGICAL_SUMMARY(
+        REPERTOIRE_ANALYSIS.out.tables
+    )
 }
