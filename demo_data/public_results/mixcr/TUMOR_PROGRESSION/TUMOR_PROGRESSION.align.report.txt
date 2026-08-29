@@ -1,0 +1,51 @@
+Analysis date: Sat Aug 29 11:02:12 UTC 2026
+Input file(s): SRR39393485_1.fastq.gz,SRR39393485_2.fastq.gz
+Output file(s): TUMOR_PROGRESSION.alignments.vdjca
+Version: 4.7.0-370-develop; built=Fri Jul 10 16:39:06 UTC 2026; rev=00eb424cfc; lib=repseqio.v6.3
+Command line arguments: align --report TUMOR_PROGRESSION.align.report.txt --json-report TUMOR_PROGRESSION.align.report.json --preset invivoscribe-human-dna-trb-lymphotrack --save-output-file-names TUMOR_PROGRESSION.align.list.tsv SRR39393485_1.fastq.gz SRR39393485_2.fastq.gz TUMOR_PROGRESSION.alignments.vdjca
+Analysis time: 3.15m
+Total sequencing reads: 336230
+Successfully aligned reads: 203596 (60.55%)
+Coverage (percent of successfully aligned):
+  CDR3: 199116 (97.8%)
+  FR3_TO_FR4: 180450 (88.63%)
+  CDR2_TO_FR4: 177438 (87.15%)
+  FR2_TO_FR4: 112024 (55.02%)
+  CDR1_TO_FR4: 100013 (49.12%)
+  VDJRegion: 94396 (46.36%)
+Alignment failed: no hits (not TCR/IG?): 128475 (38.21%)
+Alignment failed: absence of V hits: 1293 (0.38%)
+Alignment failed: absence of J hits: 1836 (0.55%)
+Alignment failed: no target with both V and J alignments: 1030 (0.31%)
+Overlapped: 328676 (97.75%)
+Overlapped and aligned: 200743 (59.7%)
+Overlapped and not aligned: 127933 (38.05%)
+Alignment-aided overlaps, percent of overlapped and aligned: 1465 (0.73%)
+No CDR3 parts alignments, percent of successfully aligned: 1261 (0.62%)
+Partial aligned reads, percent of successfully aligned: 3219 (1.58%)
+V gene chimeras: 588 (0.17%)
+J gene chimeras: 17 (0.01%)
+Paired-end alignment conflicts eliminated: 192 (0.06%)
+Realigned with forced non-floating bound: 18038 (5.36%)
+Realigned with forced non-floating right bound in left read: 292 (0.09%)
+Realigned with forced non-floating left bound in right read: 292 (0.09%)
+TRA chains: 1 (0%)
+TRA non-functional: 0 (0%)
+TRB chains: 102663 (50.42%)
+TRB non-functional: 18095 (17.63%)
+TRG chains: 368 (0.18%)
+TRG non-functional: 267 (72.55%)
+IGH chains: 100013 (49.12%)
+IGH non-functional: 12374 (12.37%)
+IGK chains: 551 (0.27%)
+IGK non-functional: 241 (43.74%)
+Trimming report:
+  R1 reads trimmed left: 72 (0.02%)
+  R1 reads trimmed right: 21739 (6.47%)
+  Average R1 nucleotides trimmed left: 0.004214377063319751
+  Average R1 nucleotides trimmed right: 0.47689379293935696
+  R2 reads trimmed left: 127 (0.04%)
+  R2 reads trimmed right: 62628 (18.63%)
+  Average R2 nucleotides trimmed left: 0.008226511614073699
+  Average R2 nucleotides trimmed right: 3.166284983493442
+======================================

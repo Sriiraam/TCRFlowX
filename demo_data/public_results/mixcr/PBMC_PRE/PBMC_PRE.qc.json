@@ -1,0 +1,106 @@
+[ {
+  "step" : "align",
+  "status" : "ALERT",
+  "check" : {
+    "type" : "SuccessfullyAlignedReads",
+    "upper" : 0.8,
+    "middle" : 0.6,
+    "label" : "Successfully aligned reads"
+  },
+  "payload" : {
+    "printedValue" : "50.79%",
+    "value" : 0.5078639920890253
+  }
+}, {
+  "step" : "align",
+  "status" : "ALERT",
+  "check" : {
+    "type" : "OffTargetReads",
+    "upper" : 0.4,
+    "middle" : 0.2,
+    "label" : "Off target (non TCR/IG) reads"
+  },
+  "payload" : {
+    "printedValue" : "48.2%",
+    "value" : 0.48195644489388645
+  }
+}, {
+  "step" : "align",
+  "status" : "OK",
+  "check" : {
+    "type" : "ReadsWithNoVOrJHits",
+    "upper" : 0.4,
+    "middle" : 0.2,
+    "label" : "Reads with no V or J hits"
+  },
+  "payload" : {
+    "printedValue" : "0.51%",
+    "value" : 0.00507859517555831
+  }
+}, {
+  "step" : "assemble",
+  "status" : "ALERT",
+  "check" : {
+    "type" : "ReadsUsedInClonotypes",
+    "upper" : 0.7,
+    "middle" : 0.5,
+    "label" : "Reads used in clonotypes"
+  },
+  "payload" : {
+    "printedValue" : "40.92%",
+    "value" : 0.40923633141972465
+  }
+}, {
+  "step" : "assemble",
+  "status" : "OK",
+  "check" : {
+    "type" : "AlignmentsWithNoAssemblingFeature",
+    "upper" : 0.3,
+    "middle" : 0.2,
+    "label" : "Alignments without assembling feature"
+  },
+  "payload" : {
+    "labelOverride" : "Alignments that do not cover CDR3",
+    "printedValue" : "9.23%",
+    "value" : 0.09230514526572016
+  }
+}, {
+  "step" : "assemble",
+  "status" : "OK",
+  "check" : {
+    "type" : "AlignmentsDroppedLowQuality",
+    "upper" : 0.15,
+    "middle" : 0.05,
+    "label" : "Alignments dropped due to low sequence quality"
+  },
+  "payload" : {
+    "printedValue" : "0.0%",
+    "value" : 8.949066388649003E-6
+  }
+}, {
+  "step" : "assemble",
+  "status" : "OK",
+  "check" : {
+    "type" : "ClonesDroppedInPostFiltering",
+    "upper" : 0.15,
+    "middle" : 0.05,
+    "label" : "Clones dropped in post-filtering"
+  },
+  "payload" : {
+    "printedValue" : "0.0%",
+    "value" : 0.0
+  }
+}, {
+  "step" : "assemble",
+  "status" : "OK",
+  "check" : {
+    "type" : "AlignmentsDroppedInPostFiltering",
+    "upper" : 0.15,
+    "middle" : 0.05,
+    "label" : "Alignments dropped in clones post-filtering"
+  },
+  "payload" : {
+    "printedValue" : "0.0%",
+    "value" : 0.0
+  }
+} ]

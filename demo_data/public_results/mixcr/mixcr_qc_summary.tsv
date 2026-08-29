@@ -1,0 +1,6 @@
+sample_id	aligned_reads_pct	off_target_pct	reads_used_in_clonotypes_pct	no_v_or_j_hits_pct	no_cdr3_pct	low_quality_drop_pct	trb_clonotypes
+PBMC_PRE	50.79	48.2	40.92	0.51	9.23	0.0	6236
+TUMOR_PRE	79.82	19.49	74.34	0.51	2.98	0.0	5932
+PBMC_RELAPSE	73.09	24.7	67.63	1.81	2.47	0.0	2319
+PBMC_PROGRESSION	67.73	31.11	64.05	0.91	1.52	0.0	6423
+TUMOR_PROGRESSION	60.55	38.21	56.83	0.93	1.33	0.0	3188

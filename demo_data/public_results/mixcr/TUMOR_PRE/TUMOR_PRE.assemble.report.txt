@@ -1,0 +1,35 @@
+Analysis date: Sat Aug 29 11:16:02 UTC 2026
+Input file(s): TUMOR_PRE.alignments.vdjca
+Output file(s): TUMOR_PRE.clns
+Version: 4.7.0-370-develop; built=Fri Jul 10 16:39:06 UTC 2026; rev=00eb424cfc; lib=repseqio.v6.3
+Command line arguments: assemble --report TUMOR_PRE.assemble.report.txt --json-report TUMOR_PRE.assemble.report.json TUMOR_PRE.alignments.vdjca TUMOR_PRE.clns
+Analysis time: 20.24s
+Final clonotype count: 15916
+Reads used in clonotypes, percent of total: 834883 (74.34%)
+Average number of reads per clonotype: 52.46
+Reads dropped due to the lack of a clone sequence, percent of total: 33516 (2.98%)
+Reads dropped due to a too short clonal sequence, percent of total: 146 (0.01%)
+Reads dropped due to low quality, percent of total: 11 (0%)
+Reads dropped due to failed mapping, percent of total: 11820 (1.05%)
+Reads dropped with low quality clones, percent of total: 154 (0.01%)
+Aligned reads processed: 862889
+Reads used in clonotypes before clustering, percent of total: 850758 (75.75%)
+Number of reads used as a core, percent of used: 841786 (98.95%)
+Mapped low quality reads, percent of used: 8972 (1.05%)
+Reads clustered in PCR error correction, percent of used: 15875 (1.87%)
+Reads pre-clustered due to the similar VJC-lists, percent of used: 0 (0%)
+Clonotypes dropped as low quality: 145
+Clonotypes eliminated by PCR error correction: 11686
+Clonotypes pre-clustered due to the similar VJC-lists: 0
+Clones dropped in post filtering: 0 (0%)
+Reads dropped in post filtering: 0.0 (0%)
+Reads filtered by tag prefix: 0 (0%)
+TRB chains: 5932 (37.27%)
+TRB non-functional: 1222 (20.6%)
+TRG chains: 8653 (54.37%)
+TRG non-functional: 5930 (68.53%)
+IGH chains: 1256 (7.89%)
+IGH non-functional: 273 (21.74%)
+IGK chains: 75 (0.47%)
+IGK non-functional: 36 (48%)
+======================================

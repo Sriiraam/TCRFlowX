@@ -1,0 +1,35 @@
+Analysis date: Sat Aug 29 11:17:56 UTC 2026
+Input file(s): PBMC_PRE.alignments.vdjca
+Output file(s): PBMC_PRE.clns
+Version: 4.7.0-370-develop; built=Fri Jul 10 16:39:06 UTC 2026; rev=00eb424cfc; lib=repseqio.v6.3
+Command line arguments: assemble --report PBMC_PRE.assemble.report.txt --json-report PBMC_PRE.assemble.report.json PBMC_PRE.alignments.vdjca PBMC_PRE.clns
+Analysis time: 8.11s
+Final clonotype count: 6679
+Reads used in clonotypes, percent of total: 91459 (40.92%)
+Average number of reads per clonotype: 13.69
+Reads dropped due to the lack of a clone sequence, percent of total: 20629 (9.23%)
+Reads dropped due to a too short clonal sequence, percent of total: 0 (0%)
+Reads dropped due to low quality, percent of total: 2 (0%)
+Reads dropped due to failed mapping, percent of total: 245 (0.11%)
+Reads dropped with low quality clones, percent of total: 36 (0.02%)
+Aligned reads processed: 92872
+Reads used in clonotypes before clustering, percent of total: 92589 (41.43%)
+Number of reads used as a core, percent of used: 92347 (99.74%)
+Mapped low quality reads, percent of used: 242 (0.26%)
+Reads clustered in PCR error correction, percent of used: 1130 (1.22%)
+Reads pre-clustered due to the similar VJC-lists, percent of used: 0 (0%)
+Clonotypes dropped as low quality: 36
+Clonotypes eliminated by PCR error correction: 994
+Clonotypes pre-clustered due to the similar VJC-lists: 0
+Clones dropped in post filtering: 0 (0%)
+Reads dropped in post filtering: 0.0 (0%)
+Reads filtered by tag prefix: 0 (0%)
+TRB chains: 6236 (93.37%)
+TRB non-functional: 1242 (19.92%)
+TRG chains: 298 (4.46%)
+TRG non-functional: 216 (72.48%)
+IGH chains: 128 (1.92%)
+IGH non-functional: 17 (13.28%)
+IGK chains: 17 (0.25%)
+IGK non-functional: 8 (47.06%)
+======================================

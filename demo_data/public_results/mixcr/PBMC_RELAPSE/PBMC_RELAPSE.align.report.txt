@@ -1,0 +1,49 @@
+Analysis date: Sat Aug 29 11:05:41 UTC 2026
+Input file(s): SRR39393487_1.fastq.gz,SRR39393487_2.fastq.gz
+Output file(s): PBMC_RELAPSE.alignments.vdjca
+Version: 4.7.0-370-develop; built=Fri Jul 10 16:39:06 UTC 2026; rev=00eb424cfc; lib=repseqio.v6.3
+Command line arguments: align --report PBMC_RELAPSE.align.report.txt --json-report PBMC_RELAPSE.align.report.json --preset invivoscribe-human-dna-trb-lymphotrack --save-output-file-names PBMC_RELAPSE.align.list.tsv SRR39393487_1.fastq.gz SRR39393487_2.fastq.gz PBMC_RELAPSE.alignments.vdjca
+Analysis time: 1.87m
+Total sequencing reads: 223950
+Successfully aligned reads: 163692 (73.09%)
+Coverage (percent of successfully aligned):
+  CDR3: 158151 (96.61%)
+  FR3_TO_FR4: 149812 (91.52%)
+  CDR2_TO_FR4: 147757 (90.27%)
+  FR2_TO_FR4: 105053 (64.18%)
+  CDR1_TO_FR4: 99363 (60.7%)
+  VDJRegion: 95777 (58.51%)
+Alignment failed: no hits (not TCR/IG?): 55313 (24.7%)
+Alignment failed: absence of V hits: 3400 (1.52%)
+Alignment failed: absence of J hits: 659 (0.29%)
+Alignment failed: no target with both V and J alignments: 886 (0.4%)
+Overlapped: 217059 (96.92%)
+Overlapped and aligned: 161845 (72.27%)
+Overlapped and not aligned: 55214 (24.65%)
+Alignment-aided overlaps, percent of overlapped and aligned: 1380 (0.85%)
+No CDR3 parts alignments, percent of successfully aligned: 1368 (0.84%)
+Partial aligned reads, percent of successfully aligned: 4173 (2.55%)
+V gene chimeras: 408 (0.18%)
+J gene chimeras: 18 (0.01%)
+Paired-end alignment conflicts eliminated: 117 (0.05%)
+Realigned with forced non-floating bound: 16542 (7.39%)
+Realigned with forced non-floating right bound in left read: 298 (0.13%)
+Realigned with forced non-floating left bound in right read: 298 (0.13%)
+TRB chains: 61964 (37.85%)
+TRB non-functional: 18053 (29.13%)
+TRG chains: 1280 (0.78%)
+TRG non-functional: 903 (70.55%)
+IGH chains: 100280 (61.26%)
+IGH non-functional: 9164 (9.14%)
+IGK chains: 168 (0.1%)
+IGK non-functional: 66 (39.29%)
+Trimming report:
+  R1 reads trimmed left: 8 (0%)
+  R1 reads trimmed right: 17790 (7.94%)
+  Average R1 nucleotides trimmed left: 8.930564858227283E-4
+  Average R1 nucleotides trimmed right: 0.4278901540522438
+  R2 reads trimmed left: 50 (0.02%)
+  R2 reads trimmed right: 55280 (24.68%)
+  Average R2 nucleotides trimmed left: 0.004996651038178165
+  Average R2 nucleotides trimmed right: 3.961772717124358
+======================================

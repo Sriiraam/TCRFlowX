@@ -1,0 +1,35 @@
+Analysis date: Sat Aug 29 11:07:34 UTC 2026
+Input file(s): PBMC_RELAPSE.alignments.vdjca
+Output file(s): PBMC_RELAPSE.clns
+Version: 4.7.0-370-develop; built=Fri Jul 10 16:39:06 UTC 2026; rev=00eb424cfc; lib=repseqio.v6.3
+Command line arguments: assemble --report PBMC_RELAPSE.assemble.report.txt --json-report PBMC_RELAPSE.assemble.report.json PBMC_RELAPSE.alignments.vdjca PBMC_RELAPSE.clns
+Analysis time: 6.85s
+Final clonotype count: 6446
+Reads used in clonotypes, percent of total: 151463 (67.63%)
+Average number of reads per clonotype: 23.5
+Reads dropped due to the lack of a clone sequence, percent of total: 5541 (2.47%)
+Reads dropped due to a too short clonal sequence, percent of total: 1 (0%)
+Reads dropped due to low quality, percent of total: 1 (0%)
+Reads dropped due to failed mapping, percent of total: 2636 (1.18%)
+Reads dropped with low quality clones, percent of total: 36 (0.02%)
+Aligned reads processed: 158151
+Reads used in clonotypes before clustering, percent of total: 155477 (69.42%)
+Number of reads used as a core, percent of used: 153501 (98.73%)
+Mapped low quality reads, percent of used: 1976 (1.27%)
+Reads clustered in PCR error correction, percent of used: 4014 (2.58%)
+Reads pre-clustered due to the similar VJC-lists, percent of used: 0 (0%)
+Clonotypes dropped as low quality: 36
+Clonotypes eliminated by PCR error correction: 3409
+Clonotypes pre-clustered due to the similar VJC-lists: 0
+Clones dropped in post filtering: 0 (0%)
+Reads dropped in post filtering: 0.0 (0%)
+Reads filtered by tag prefix: 0 (0%)
+TRB chains: 2319 (35.98%)
+TRB non-functional: 457 (19.71%)
+TRG chains: 907 (14.07%)
+TRG non-functional: 639 (70.45%)
+IGH chains: 3082 (47.81%)
+IGH non-functional: 508 (16.48%)
+IGK chains: 138 (2.14%)
+IGK non-functional: 54 (39.13%)
+======================================
