@@ -15,6 +15,7 @@ if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
 from theme import apply_theme
+from data_paths import RESULTS_ROOT
 
 
 st.set_page_config(
@@ -90,16 +91,14 @@ html("""
 """)
 
 multiqc = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "qc"
     / "multiqc_raw"
     / "multiqc_report.html"
 )
 
 mixcr_qc = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "mixcr"
     / "mixcr_qc_summary.tsv"
 )
@@ -132,22 +131,19 @@ html("""
 """)
 
 bio_md = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "repertoire"
     / "biological_interpretation.md"
 )
 
 bio_summary = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "repertoire"
     / "biological_summary.tsv"
 )
 
 persistent = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "repertoire"
     / "top_persistent_clonotypes.tsv"
 )
@@ -206,8 +202,7 @@ html("""
 """)
 
 tables_dir = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "repertoire"
     / "tables"
 )
@@ -278,8 +273,7 @@ html("""
 """)
 
 benchmark_dir = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "benchmark"
 )
 
@@ -349,8 +343,7 @@ html("""
 """)
 
 fig_dir = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "repertoire"
     / "figures"
 )
@@ -414,8 +407,7 @@ html("""
 """)
 
 nextflow_dir = (
-    ROOT
-    / "results"
+    RESULTS_ROOT
     / "nextflow"
 )
 

@@ -35,23 +35,23 @@ def html(content):
 
 
 overlap = pd.read_csv(
-    ROOT
-    / "results/repertoire/tables/"
+    RESULTS_ROOT
+    / "repertoire/tables/"
     "tumor_pbmc_overlap.tsv",
     sep="\t",
 )
 
 jaccard = pd.read_csv(
-    ROOT
-    / "results/repertoire/tables/"
+    RESULTS_ROOT
+    / "repertoire/tables/"
     "pairwise_jaccard.tsv",
     sep="\t",
     index_col=0,
 )
 
 tumor = pd.read_csv(
-    ROOT
-    / "results/repertoire/tables/"
+    RESULTS_ROOT
+    / "repertoire/tables/"
     "tumor_longitudinal_clonotypes.tsv",
     sep="\t",
 )

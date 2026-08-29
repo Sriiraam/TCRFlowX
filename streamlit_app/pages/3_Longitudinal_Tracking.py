@@ -36,8 +36,8 @@ def html(content):
 
 
 tracking = pd.read_csv(
-    ROOT
-    / "results/repertoire/tables/"
+    RESULTS_ROOT
+    / "repertoire/tables/"
     "pbmc_longitudinal_clonotypes.tsv",
     sep="\t",
 )

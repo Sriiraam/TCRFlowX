@@ -46,8 +46,8 @@ tracking = pd.read_csv(
 )
 
 benchmark = pd.read_csv(
-    ROOT
-    / "results/benchmark/PBMC_PRE/PBMC_PRE_benchmark_summary.tsv",
+    RESULTS_ROOT
+    / "benchmark/PBMC_PRE/PBMC_PRE_benchmark_summary.tsv",
     sep="\t",
 )
 

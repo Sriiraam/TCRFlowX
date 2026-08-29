@@ -39,8 +39,8 @@ def html(content):
 # ---------------------------------------------------------
 
 div = pd.read_csv(
-    ROOT
-    / "results/repertoire/tables/"
+    RESULTS_ROOT
+    / "repertoire/tables/"
     "diversity_clonality.tsv",
     sep="\t",
 )
@@ -55,8 +55,7 @@ clone_tables = []
 for sample in div["sample"]:
 
     path = (
-        ROOT
-        / "results"
+        RESULTS_ROOT
         / "mixcr"
         / sample
         / f"{sample}.clones_TRB.tsv"
