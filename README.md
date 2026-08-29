@@ -10,6 +10,13 @@
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
 
+## Live Demo
+
+Explore TCRFlowX directly in your browser — no local installation required.
+
+**[Launch the TCRFlowX dashboard →](https://tcrflowx.streamlit.app/)**
+
+
 ## Overview
 
 TCRFlowX is an end-to-end bioinformatics workflow for T-cell receptor repertoire analysis from paired-end TCR-seq data.
