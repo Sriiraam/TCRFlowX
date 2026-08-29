@@ -1,4 +1,5 @@
 from pathlib import Path
+from data_paths import RESULTS_ROOT
 from textwrap import dedent
 
 import pandas as pd
@@ -30,17 +31,17 @@ def html(content):
 # -------------------------------------------------------
 
 div = pd.read_csv(
-    ROOT / "results/repertoire/tables/diversity_clonality.tsv",
+    RESULTS_ROOT / "repertoire/tables/diversity_clonality.tsv",
     sep="\t",
 )
 
 summary = pd.read_csv(
-    ROOT / "results/repertoire/biological_summary.tsv",
+    RESULTS_ROOT / "repertoire/biological_summary.tsv",
     sep="\t",
 )
 
 tracking = pd.read_csv(
-    ROOT / "results/repertoire/tables/pbmc_longitudinal_clonotypes.tsv",
+    RESULTS_ROOT / "repertoire/tables/pbmc_longitudinal_clonotypes.tsv",
     sep="\t",
 )
 

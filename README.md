@@ -3,9 +3,12 @@
 **A reproducible TCR-seq cancer immunogenomics workflow for longitudinal T-cell receptor repertoire analysis.**
 
 ![CI](https://github.com/Sriiraam/TCRFlowX/actions/workflows/ci.yml/badge.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Release](https://img.shields.io/github/v/release/Sriiraam/TCRFlowX)
+![License](https://img.shields.io/github/license/Sriiraam/TCRFlowX)
 ![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-23aa62)
-![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
 
 ## Overview
 
@@ -585,3 +588,22 @@ GitHub: [Sriiraam](https://github.com/Sriiraam)
 ## Disclaimer
 
 TCRFlowX is a research bioinformatics workflow and is not intended for clinical diagnosis or medical decision-making.
+
+---
+
+## Future Upgrades
+
+TCRFlowX v0.1.0 establishes the core reproducible cancer immunogenomics workflow. Future development may include:
+
+- Full end-to-end pipeline containerization
+- Real-world SLURM/HPC execution validation
+- Azure Batch/cloud execution validation
+- Multi-patient and larger-cohort TCR-seq analysis
+- Small fixture datasets for automated integration testing
+- Expanded unit and workflow-level test coverage
+- Additional repertoire similarity and clone-tracking methods
+- Automated database generation as part of the Nextflow workflow
+- Public dashboard deployment
+- GitHub Releases and archival DOI integration
+
+See `CHANGELOG.md` for version history.

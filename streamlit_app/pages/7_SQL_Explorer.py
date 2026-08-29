@@ -21,10 +21,11 @@ if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
 from theme import apply_theme
+from data_paths import DATABASE_PATH
 
 apply_theme()
 
-DB_PATH = ROOT / "database" / "tcrflowx.db"
+DB_PATH = DATABASE_PATH
 
 
 def html(content):

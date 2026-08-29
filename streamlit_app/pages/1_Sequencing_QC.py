@@ -15,6 +15,7 @@ if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
 from theme import apply_theme
+from data_paths import RESULTS_ROOT
 
 
 st.set_page_config(
@@ -37,7 +38,7 @@ def html(content):
 # ---------------------------------------------------------
 
 qc = pd.read_csv(
-    ROOT / "results/mixcr/mixcr_qc_summary.tsv",
+    RESULTS_ROOT / "mixcr/mixcr_qc_summary.tsv",
     sep="\t",
 )
 
