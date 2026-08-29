@@ -1,0 +1,9 @@
+metric	value
+author_productive_unique_cdr3	4836.0
+tcrflowx_productive_unique_cdr3	4835.0
+shared_productive_cdr3	4795.0
+cdr3_jaccard	0.9833880229696472
+top20_overlap	20.0
+top100_overlap	98.0
+spearman_rho	0.9966609391453481
+spearman_pvalue	0.0

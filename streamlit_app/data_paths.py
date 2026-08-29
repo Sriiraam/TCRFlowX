@@ -3,7 +3,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 LOCAL_RESULTS = PROJECT_ROOT / "results"
-DEMO_RESULTS = PROJECT_ROOT / "demo_data" / "results"
+DEMO_RESULTS = PROJECT_ROOT / "demo_data" / "public_results"
 
 LOCAL_DATABASE = PROJECT_ROOT / "database" / "tcrflowx.db"
 DEMO_DATABASE = PROJECT_ROOT / "demo_data" / "database" / "tcrflowx.db"

@@ -1,0 +1,3 @@
+stage	pbmc_sample	tumor_sample	pbmc_clonotypes	tumor_clonotypes	shared_clonotypes	jaccard
+PRE	PBMC_PRE	TUMOR_PRE	4835	4546	1096	0.132287266143633
+PROGRESSION	PBMC_PROGRESSION	TUMOR_PROGRESSION	5018	2467	445	0.0632102272727273

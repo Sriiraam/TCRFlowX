@@ -1,0 +1,6 @@
+finding	value_pre	value_relapse	interpretation
+PBMC richness decreases at relapse	4994.0	1862.0	Marked contraction of productive TCRbeta repertoire richness at relapse.
+PBMC clonality increases at relapse	0.139308808679798	0.249863712983006	Relapse repertoire becomes more oligoclonal, consistent with expansion of selected T-cell clones.
+PBMC richness rebounds at progression	1862.0	5193.0	Repertoire richness expands again at progression, although clonality remains above the pre-treatment state.
+Tumor clonality decreases at progression	0.221098994131171	0.111749978701963	Progression tumor repertoire is less dominated by a small number of clones than the pre-treatment tumor repertoire.
+Tumor-PBMC overlap decreases	0.132287266143633	0.0632102272727273	Shared productive TCRbeta repertoire between blood and tumor decreases at progression.
