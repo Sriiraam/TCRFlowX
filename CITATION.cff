@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use TCRFlowX, please cite this software using the metadata below."
+
+title: "TCRFlowX: A Reproducible TCR-seq Cancer Immunogenomics Workflow"
+
+type: software
+
+authors:
+  - family-names: "B"
+    given-names: "Sriram"
+
+version: 0.1.0
+date-released: 2026-08-29
+
+repository-code: "https://github.com/Sriiraam/TCRFlowX"
+
+license: MIT
+
+keywords:
+  - TCR-seq
+  - cancer immunogenomics
+  - bioinformatics
+  - Nextflow
+  - MiXCR
+  - T-cell receptor
+  - repertoire analysis
+  - immunoinformatics
+  - reproducible workflows

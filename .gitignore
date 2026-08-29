@@ -47,3 +47,16 @@ work/
 # Nextflow cache/log
 .nextflow/
 .nextflow.log*
+
+# Local development
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# Generated database
+database/*.db
+
+# MiXCR local installation / licensing
+tools/mixcr/
+.mi/
+*.license

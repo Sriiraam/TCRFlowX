@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tcrflowx-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tcrflowx-dashboard
+  template:
+    metadata:
+      labels:
+        app: tcrflowx-dashboard
+    spec:
+      containers:
+        - name: tcrflowx-dashboard
+          image: tcrflowx-dashboard:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          volumeMounts:
+            - name: results
+              mountPath: /opt/tcrflowx/results
+              readOnly: true
+            - name: database
+              mountPath: /opt/tcrflowx/database
+              readOnly: true
+
+      volumes:
+        - name: results
+          hostPath:
+            path: /tcrflowx/results
+            type: Directory
+        - name: database
+          hostPath:
+            path: /tcrflowx/database
+            type: Directory
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tcrflowx-dashboard
+spec:
+  selector:
+    app: tcrflowx-dashboard
+  ports:
+    - port: 8501
+      targetPort: 8501
+  type: NodePort

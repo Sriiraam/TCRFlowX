@@ -1,0 +1,73 @@
+name: TCRFlowX CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  python-tests:
+    name: Python tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas pytest
+
+      - name: Run tests
+        run: pytest -v tests/
+
+
+  nextflow-config:
+    name: Validate Nextflow profiles
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Nextflow
+        run: |
+          curl -s https://get.nextflow.io | bash
+          sudo mv nextflow /usr/local/bin/
+
+      - name: Validate profiles
+        run: |
+          nextflow config -profile local >/dev/null
+          nextflow config -profile docker >/dev/null
+          nextflow config -profile slurm >/dev/null
+          nextflow config -profile azure >/dev/null
+          nextflow config -profile k8s >/dev/null
+
+
+  docker-build:
+    name: Build dashboard container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t tcrflowx-dashboard:ci .

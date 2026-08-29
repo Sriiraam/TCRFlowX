@@ -2,14 +2,14 @@
 
 nextflow.enable.dsl = 2
 
-include { FASTQC }              from './modules/fastqc'
-include { MULTIQC }             from './modules/multiqc'
-include { MIXCR }               from './modules/mixcr'
-include { REPERTOIRE_ANALYSIS } from './modules/repertoire_analysis'
-include { BIOLOGICAL_SUMMARY }  from './modules/biological_summary'
+include { QC_WORKFLOW }         from './workflow/subworkflows/qc'
+include { REPERTOIRE_WORKFLOW } from './workflow/subworkflows/repertoire'
 
 workflow {
 
+    /*
+     * Build sample channel from metadata.
+     */
     ch_samples = Channel
         .fromPath(params.samplesheet, checkIfExists: true)
         .splitCsv(header: true)
@@ -43,38 +43,12 @@ workflow {
         }
 
     /*
-     * Raw QC
+     * Stage 1: sequencing quality control
      */
-    FASTQC(ch_samples)
-
-    ch_multiqc_input = FASTQC.out.reports
-        .map { meta, html, zip -> [html, zip] }
-        .flatten()
-        .collect()
-
-    MULTIQC(ch_multiqc_input)
+    QC_WORKFLOW(ch_samples)
 
     /*
-     * MiXCR
+     * Stage 2: TRB reconstruction and repertoire analysis
      */
-    MIXCR(ch_samples)
-
-    /*
-     * Collect TRB clonotype files only AFTER MIXCR runs
-     */
-    ch_trb_clones = MIXCR.out.clones
-        .map { meta, clones -> clones }
-        .collect()
-
-    /*
-     * Repertoire analysis
-     */
-    REPERTOIRE_ANALYSIS(ch_trb_clones)
-
-    /*
-     * Biological interpretation
-     */
-    BIOLOGICAL_SUMMARY(
-        REPERTOIRE_ANALYSIS.out.tables
-    )
+    REPERTOIRE_WORKFLOW(ch_samples)
 }

@@ -1,0 +1,10 @@
+.venv/
+.git/
+work/
+.nextflow/
+.nextflow.log*
+results/
+data/raw/
+database/tcrflowx.db
+__pycache__/
+*.pyc
