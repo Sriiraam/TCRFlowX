@@ -2,13 +2,16 @@
 
 **A reproducible TCR-seq cancer immunogenomics workflow for longitudinal T-cell receptor repertoire analysis.**
 
-![CI](https://github.com/Sriiraam/TCRFlowX/actions/workflows/ci.yml/badge.svg)
-![Release](https://img.shields.io/github/v/release/Sriiraam/TCRFlowX)
-![License](https://img.shields.io/github/license/Sriiraam/TCRFlowX)
+[![TCRFlowX CI](https://github.com/Sriiraam/TCRFlowX/actions/workflows/ci.yml/badge.svg)](https://github.com/Sriiraam/TCRFlowX/actions/workflows/ci.yml)
+![License](https://img.shields.io/badge/License-MIT-green)
 ![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-23aa62)
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
+![TCR--seq](https://img.shields.io/badge/Assay-TCR--seq-8E44AD)
+![Receptor](https://img.shields.io/badge/Receptor-TRB-E67E22)
+![MiXCR](https://img.shields.io/badge/MiXCR-4.7.0-9B59B6)
+![Cancer](https://img.shields.io/badge/Cancer-cHL-C0392B)
+[![Live Dashboard](https://img.shields.io/badge/Streamlit-Live%20Dashboard-FF4B4B?logo=streamlit&logoColor=white)](https://tcrflowx.streamlit.app/)
 
 ## Live Demo
 
