@@ -58,7 +58,6 @@ jobs:
           nextflow config -profile docker >/dev/null
           nextflow config -profile slurm >/dev/null
           nextflow config -profile azure >/dev/null
-          nextflow config -profile k8s >/dev/null
 
 
   docker-build:

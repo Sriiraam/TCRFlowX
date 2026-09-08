@@ -50,7 +50,6 @@ def test_config_profiles_exist():
         "local.config",
         "docker.config",
         "slurm.config",
-        "k8s.config",
         "azure.config",
     ]
 

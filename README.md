@@ -37,7 +37,7 @@ The project combines:
 - SQLite analytical storage
 - SQL-based repertoire exploration
 - interactive Streamlit visualization
-- Docker and local Kubernetes deployment
+- Docker deployment
 
 The workflow was developed using a longitudinal classical Hodgkin lymphoma dataset collected around PD-1 blockade.
 
@@ -135,7 +135,6 @@ TCRFlowX/
 │   ├── local.config
 │   ├── docker.config
 │   ├── slurm.config
-│   ├── k8s.config
 │   └── azure.config
 ├── modules/
 │   ├── fastqc.nf
@@ -228,7 +227,6 @@ nextflow run main.nf -profile local -resume
 | `local` | Local workstation execution | Validated |
 | `docker` | Docker-enabled execution profile | Configuration validated |
 | `slurm` | HPC execution using SLURM | Template provided; cluster-specific configuration required |
-| `k8s` | Kubernetes execution profile | Configuration validated |
 | `azure` | Azure execution scaffold | Requires explicit cloud configuration |
 
 Cloud credentials and paid resources are never automatically provisioned by this repository.
@@ -434,28 +432,6 @@ http://localhost:8501
 
 ---
 
-## Kubernetes
-
-The dashboard was validated locally using a `kind` Kubernetes cluster.
-
-Example deployment:
-
-```bash
-kind create cluster --name tcrflowx
-
-kind load docker-image tcrflowx-dashboard:latest \
-  --name tcrflowx
-
-kubectl apply -f k8s-dashboard.yaml
-
-kubectl port-forward \
-  service/tcrflowx-dashboard \
-  8501:8501
-```
-
-This Kubernetes deployment is intended for local portfolio validation and development.
-
----
 
 ## Testing
 

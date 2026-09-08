@@ -28,8 +28,7 @@ The project follows Semantic Versioning where practical.
 - SQL clonotype exploration
 - Interactive Streamlit dashboard
 - Dockerized dashboard deployment
-- Local Kubernetes deployment using kind
-- Local, Docker, SLURM, Kubernetes and Azure configuration profiles
+- Local, Docker, SLURM and Azure configuration profiles
 - Automated pytest output validation
 - Nextflow report, trace, timeline and DAG generation
 - Project architecture and technical documentation
