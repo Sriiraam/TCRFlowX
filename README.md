@@ -77,7 +77,7 @@ TCRFlowX investigates:
 ## Workflow Architecture
 
 
-![TCRFlowX workflow architecture](docs/assets/tcrflowx_architecture.png)
+![TCRFlowX workflow architecture](docs/assets/tcrflowx_workflow_architecture.png)
 
 TCRFlowX uses Nextflow DSL2 to orchestrate the complete analytical workflow.
 
