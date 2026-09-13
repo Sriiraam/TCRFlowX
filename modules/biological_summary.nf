@@ -19,14 +19,6 @@ process BIOLOGICAL_SUMMARY {
 
     script:
     """
-    mkdir -p results/repertoire
-
-    cp -r ${tables} results/repertoire/tables
-
     python ${projectDir}/scripts/biological_summary.py
-
-    cp ${projectDir}/results/repertoire/biological_summary.tsv .
-    cp ${projectDir}/results/repertoire/biological_interpretation.md .
-    cp ${projectDir}/results/repertoire/top_persistent_clonotypes.tsv .
     """
 }

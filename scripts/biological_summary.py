@@ -1,9 +1,8 @@
 from pathlib import Path
 import pandas as pd
 
-base = Path("results/repertoire/tables")
-outdir = Path("results/repertoire")
-outdir.mkdir(parents=True, exist_ok=True)
+base = Path("tables")
+outdir = Path(".")
 
 div = pd.read_csv(base / "diversity_clonality.tsv", sep="\t")
 overlap = pd.read_csv(base / "tumor_pbmc_overlap.tsv", sep="\t")

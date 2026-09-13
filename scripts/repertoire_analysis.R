@@ -16,10 +16,9 @@ samples <- c(
   "TUMOR_PROGRESSION"
 )
 
-outdir <- "results/repertoire"
-dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
-dir.create(file.path(outdir, "tables"), showWarnings = FALSE)
-dir.create(file.path(outdir, "figures"), showWarnings = FALSE)
+outdir <- "."
+dir.create(file.path(outdir, "tables"), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path(outdir, "figures"), recursive = TRUE, showWarnings = FALSE)
 
 # ---------------------------------------------------------
 # Load MiXCR TRB clonotypes
@@ -28,9 +27,6 @@ dir.create(file.path(outdir, "figures"), showWarnings = FALSE)
 load_sample <- function(sample) {
 
   path <- paste0(
-    "results/mixcr/",
-    sample,
-    "/",
     sample,
     ".clones_TRB.tsv"
   )
