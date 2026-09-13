@@ -1,0 +1,3 @@
+
+# Generated MultiQC HTML: preserve byte-identical canonical report
+demo_data/public_results/qc/multiqc_raw/multiqc_report.html -whitespace

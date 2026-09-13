@@ -121,6 +121,103 @@ with c2:
 
 
 # =========================================================
+# PRODUCTION QC & REPRODUCIBILITY
+# =========================================================
+
+html("""
+<div class="section-banner">
+    <h3>Production QC & Reproducibility</h3>
+</div>
+""")
+
+st.caption(
+    "Formal quality-control classification and run-level provenance "
+    "from the hardened TCRFlowX workflow."
+)
+
+formal_qc_summary = (
+    RESULTS_ROOT
+    / "mixcr"
+    / "formal_qc_summary.tsv"
+)
+
+formal_qc_report = (
+    RESULTS_ROOT
+    / "mixcr"
+    / "formal_qc_report.md"
+)
+
+provenance_tsv = (
+    RESULTS_ROOT
+    / "provenance"
+    / "run_provenance.tsv"
+)
+
+provenance_md = (
+    RESULTS_ROOT
+    / "provenance"
+    / "run_provenance.md"
+)
+
+c1, c2 = st.columns(2)
+
+with c1:
+    download_file(
+        "⬇ Formal QC Summary",
+        formal_qc_summary,
+        "text/tab-separated-values",
+    )
+
+with c2:
+    download_file(
+        "⬇ Formal QC Report",
+        formal_qc_report,
+        "text/markdown",
+    )
+
+c3, c4 = st.columns(2)
+
+with c3:
+    download_file(
+        "⬇ Run Provenance TSV",
+        provenance_tsv,
+        "text/tab-separated-values",
+    )
+
+with c4:
+    download_file(
+        "⬇ Run Provenance Report",
+        provenance_md,
+        "text/markdown",
+    )
+
+if formal_qc_report.exists():
+    with st.expander(
+        "✅ Review Formal QC Report",
+        expanded=False,
+    ):
+        st.markdown(
+            formal_qc_report.read_text(
+                encoding="utf-8",
+                errors="ignore",
+            )
+        )
+
+if provenance_md.exists():
+    with st.expander(
+        "🔎 Review Run Provenance",
+        expanded=False,
+    ):
+        st.markdown(
+            provenance_md.read_text(
+                encoding="utf-8",
+                errors="ignore",
+            )
+        )
+
+
+
+# =========================================================
 # 2. BIOLOGICAL INTERPRETATION
 # =========================================================
 
