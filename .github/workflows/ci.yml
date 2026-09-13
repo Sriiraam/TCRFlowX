@@ -159,12 +159,12 @@ jobs:
         run: |
           OUT="${{ runner.temp }}/tcrflowx-results"
 
-          test -s "$OUT/multiqc/multiqc_report.html"
+          test -s "$OUT/qc/multiqc_raw/multiqc_report.html"
           test -s "$OUT/repertoire/tables/diversity_clonality.tsv"
           test -s "$OUT/repertoire/biological_summary.tsv"
           test -s "$OUT/repertoire/biological_interpretation.md"
-          test -s "$OUT/repertoire/formal_qc_summary.tsv"
-          test -s "$OUT/provenance/provenance.tsv"
+          test -s "$OUT/mixcr/formal_qc_summary.tsv"
+          test -s "$OUT/provenance/run_provenance.tsv"
 
           CLONES=$(find "$OUT/mixcr" \
             -type f \
@@ -173,14 +173,14 @@ jobs:
 
           test "$CLONES" -eq 5
 
-          ROWS=$(tail -n +2 "$OUT/repertoire/formal_qc_summary.tsv" | wc -l)
+          ROWS=$(tail -n +2 "$OUT/mixcr/formal_qc_summary.tsv" | wc -l)
           test "$ROWS" -eq 5
 
           grep -F "tests/data/ci/samplesheet.csv" \
-            "$OUT/provenance/provenance.tsv"
+            "$OUT/provenance/run_provenance.tsv"
 
           grep -F $'execution_profile\tlocal' \
-            "$OUT/provenance/provenance.tsv"
+            "$OUT/provenance/run_provenance.tsv"
 
       - name: Upload workflow evidence
         if: always()
@@ -189,6 +189,6 @@ jobs:
           name: tcrflowx-e2e-evidence
           path: |
             ${{ runner.temp }}/tcrflowx-results/provenance
-            ${{ runner.temp }}/tcrflowx-results/repertoire/formal_qc_summary.tsv
+            ${{ runner.temp }}/tcrflowx-results/mixcr/formal_qc_summary.tsv
             ${{ runner.temp }}/tcrflowx-results/repertoire/biological_summary.tsv
-            ${{ runner.temp }}/tcrflowx-results/multiqc/multiqc_report.html
+            ${{ runner.temp }}/tcrflowx-results/qc/multiqc_raw/multiqc_report.html
