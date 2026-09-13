@@ -60,3 +60,7 @@ database/*.db
 tools/mixcr/
 .mi/
 *.license
+
+# Keep tiny deterministic FASTQ fixtures for end-to-end CI
+!tests/data/ci/fastq/
+!tests/data/ci/fastq/*.fastq.gz
