@@ -32,8 +32,24 @@ def sha256(path):
     return h.hexdigest()
 
 
+def resolve_path(project_dir, value):
+    path = Path(value)
+
+    if not path.is_absolute():
+        path = project_dir / path
+
+    return path.resolve()
+
+
+def display_path(project_dir, path):
+    try:
+        return str(path.relative_to(project_dir))
+    except ValueError:
+        return str(path)
+
+
 project_dir = Path(
-    os.environ.get("TCRFLOWX_PROJECT_DIR", ".")
+    os.environ["TCRFLOWX_PROJECT_DIR"]
 ).resolve()
 
 profile = os.environ.get(
@@ -41,9 +57,29 @@ profile = os.environ.get(
     "unknown"
 )
 
-samplesheet = project_dir / "metadata/samplesheet.csv"
-input_manifest = project_dir / "metadata/input_integrity.sha256"
-software_lock = project_dir / "metadata/software_versions.lock.tsv"
+samplesheet = resolve_path(
+    project_dir,
+    os.environ["TCRFLOWX_SAMPLESHEET"]
+)
+
+reads_dir = resolve_path(
+    project_dir,
+    os.environ["TCRFLOWX_READS_DIR"]
+)
+
+outdir = resolve_path(
+    project_dir,
+    os.environ["TCRFLOWX_OUTDIR"]
+)
+
+input_manifest = resolve_path(
+    project_dir,
+    os.environ["TCRFLOWX_INPUT_MANIFEST"]
+)
+
+software_lock = (
+    project_dir / "metadata/software_versions.lock.tsv"
+).resolve()
 
 git_commit = command(
     ["git", "-C", str(project_dir), "rev-parse", "HEAD"]
@@ -77,6 +113,31 @@ rows = [
     ("git_branch", git_branch),
     ("git_state", git_state),
     ("execution_profile", profile),
+
+    ("samplesheet", display_path(project_dir, samplesheet)),
+    ("samplesheet_sha256", sha256(samplesheet)),
+
+    ("reads_dir", display_path(project_dir, reads_dir)),
+    ("outdir", display_path(project_dir, outdir)),
+
+    (
+        "input_integrity_manifest",
+        display_path(project_dir, input_manifest)
+    ),
+    (
+        "input_integrity_manifest_sha256",
+        sha256(input_manifest)
+    ),
+
+    (
+        "software_lock",
+        display_path(project_dir, software_lock)
+    ),
+    (
+        "software_lock_sha256",
+        sha256(software_lock)
+    ),
+
     (
         "nextflow_version",
         nextflow_version.replace("\n", " | ")
@@ -86,33 +147,10 @@ rows = [
         java_version.replace("\n", " | ")
     ),
     ("python_version", platform.python_version()),
+
     (
         "mixcr_preset",
         "invivoscribe-human-dna-trb-lymphotrack"
-    ),
-    (
-        "samplesheet",
-        str(samplesheet.relative_to(project_dir))
-    ),
-    (
-        "samplesheet_sha256",
-        sha256(samplesheet)
-    ),
-    (
-        "input_integrity_manifest",
-        str(input_manifest.relative_to(project_dir))
-    ),
-    (
-        "input_integrity_manifest_sha256",
-        sha256(input_manifest)
-    ),
-    (
-        "software_lock",
-        str(software_lock.relative_to(project_dir))
-    ),
-    (
-        "software_lock_sha256",
-        sha256(software_lock)
     ),
 ]
 
@@ -121,13 +159,12 @@ with open("run_provenance.tsv", "w") as fh:
     fh.write("field\tvalue\n")
 
     for key, value in rows:
-        clean_value = str(value).replace("\t", " ").replace("\n", " ")
-        fh.write(f"{key}\t{clean_value}\n")
+        clean = str(value).replace("\t", " ").replace("\n", " ")
+        fh.write(f"{key}\t{clean}\n")
 
 
 with open("run_provenance.md", "w") as fh:
     fh.write("# TCRFlowX Run Provenance\n\n")
-
     fh.write(
         "Automatically generated execution-level provenance "
         "for this TCRFlowX workflow run.\n\n"
@@ -151,3 +188,4 @@ print("Generated run_provenance.md")
 print(f"Git commit: {git_commit}")
 print(f"Git state: {git_state}")
 print(f"Profile: {profile}")
+print(f"Samplesheet: {display_path(project_dir, samplesheet)}")

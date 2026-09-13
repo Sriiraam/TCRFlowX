@@ -81,6 +81,10 @@ workflow {
     PROVENANCE(
         workflow.profile ?: 'unknown',
         git_commit_fingerprint,
-        git_state_fingerprint
+        git_state_fingerprint,
+        params.samplesheet,
+        params.reads_dir,
+        params.outdir,
+        params.input_integrity_manifest
     )
 }
