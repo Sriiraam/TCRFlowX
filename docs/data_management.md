@@ -2,67 +2,109 @@
 
 ## Directory Responsibilities
 
-### data/raw/sra/
+### `data/raw/sra/`
 
-Original SRA archives downloaded from NCBI.
+Original SRA archives retrieved from NCBI during dataset acquisition.
 
-These files are immutable after successful validation.
+These archives are treated as immutable source data after validation.
 
-### data/raw/fastq/
+### `data/raw/fastq/`
 
-FASTQ files generated from validated SRA archives.
+Validated paired-end FASTQ files used by the production workflow.
 
 Raw FASTQ files are never manually edited.
 
-### data/processed/
+### `data/processed/`
 
-Only derived sequencing files created by preprocessing stages.
+Reserved for derived sequencing files if a preprocessing stage is scientifically justified.
 
-### metadata/
+The current validated production workflow sends raw FASTQ input directly to MiXCR after sequencing QC.
 
-Contains sample identity, accession mapping, clinical metadata, and data inventory.
+### `metadata/`
 
-### results/
+Contains:
 
-Contains reproducible pipeline outputs only.
+- sample identity and accession mapping
+- data inventory
+- FASTQ SHA256 checksums
+- software-version lock
+- input-integrity manifest
 
-Results must be regenerable from:
+### `results/`
 
-- raw data
-- metadata
-- pipeline code
-- configuration
-- pinned environments
+Contains regenerable workflow outputs including:
+
+- sequencing QC
+- MiXCR outputs
+- repertoire analysis
+- biological interpretation
+- formal QC
+- run provenance
+- Nextflow execution reports
 
 ## Raw Data Policy
 
-Raw FASTQ and SRA files must NOT be committed to GitHub.
+Production FASTQ and SRA files must not be committed to GitHub.
 
-## Integrity
+The repository contains only the small deterministic CI FASTQ fixtures under:
 
-After acquisition, checksums will be generated for input files.
+`tests/data/ci/`
 
-Checksums will be recorded before downstream pipeline execution.
+## Input Integrity
+
+Production FASTQ SHA256 checksums are recorded in:
+
+`metadata/fastq_checksums.sha256`
+
+Release-critical metadata and configuration integrity is recorded in:
+
+`metadata/input_integrity.sha256`
+
+The integrity manifest covers the samplesheet, data inventory, FASTQ checksum
+manifest, software lock, and workflow configuration files.
+
+Input integrity is verified before release-grade canonical execution.
 
 ## Provenance
 
-Every biological sample must remain traceable through:
+Biological samples remain traceable through:
 
-GEO sample
-→ BioSample
-→ SRA run
-→ FASTQ
-→ MiXCR output
-→ repertoire analysis
+GEO sample → SRA run → paired FASTQ → MiXCR reconstruction → repertoire analysis → biological interpretation
+
+Run-level provenance is generated automatically by the workflow.
+
+It records:
+
+- UTC run timestamp
+- Git commit
+- Git branch
+- Git working-tree state
+- execution profile
+- runtime samplesheet
+- samplesheet SHA256
+- reads directory
+- output directory
+- input-integrity manifest and SHA256
+- software lock and SHA256
+- Nextflow version
+- Java version
+- Python version
+- MiXCR preset
+
+Provenance outputs:
+
+`results/provenance/run_provenance.tsv`
+
+`results/provenance/run_provenance.md`
 
 ## Naming Convention
 
-Use stable project identifiers:
+Stable biological sample identifiers are used throughout the analysis:
 
-PBMC_PRE
-TUMOR_PRE
-PBMC_RELAPSE
-PBMC_PROGRESSION
-TUMOR_PROGRESSION
+- `PBMC_PRE`
+- `TUMOR_PRE`
+- `PBMC_RELAPSE`
+- `PBMC_PROGRESSION`
+- `TUMOR_PROGRESSION`
 
-Do not use filenames as biological identifiers inside analytical scripts.
+Filenames must not replace biological sample identifiers inside analytical logic.

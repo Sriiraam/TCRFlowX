@@ -2,10 +2,17 @@
 
 ## Test Environment
 
+The measurements below are historical process-level benchmark observations
+from the development/benchmarking run and are retained as engineering evidence.
+
 - Execution: Local WSL2
-- CPU threads: 12
+- Available CPU threads: 12
 - RAM: 7.6 GiB
 - Workflow manager: Nextflow DSL2
+
+These measurements should not be interpreted as the resource allocation of
+the current release configuration. The hardened release configuration caps
+the MiXCR process at 4 CPUs.
 
 ## Main Performance Finding
 
@@ -17,7 +24,11 @@ Across five samples:
 - Peak RSS: approximately 2.6–2.8 GB
 - Runtime per sample: approximately 1.75–7 minutes
 
-This indicates MiXCR efficiently used roughly 10–11 CPU cores while remaining within the available physical memory.
+During that historical benchmark run, MiXCR utilized roughly 10–11 CPU
+cores while remaining within the available physical memory.
+
+Current release resource settings are intentionally more conservative and are
+documented in the workflow configuration.
 
 ## Other Processes
 

@@ -1,5 +1,16 @@
 # TCRFlowX Execution Plan
 
+> **Document status:** Historical implementation plan.
+> This document records the staged development strategy used to build TCRFlowX.
+> Some items described below as planned or conditional have since been completed,
+> changed, or superseded by the current production workflow.
+>
+> For authoritative current information, see:
+> - `README.md`
+> - `docs/architecture.md`
+> - `docs/software_versions.md`
+> - `docs/data_management.md`
+
 ## Phase 0 — Scientific Definition
 
 Status: COMPLETE

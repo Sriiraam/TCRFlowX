@@ -76,3 +76,22 @@ container.
 Changes to Nextflow, MiXCR, FastQC, MultiQC, Python dependencies, R
 dependencies or biological analysis scripts require reproducibility
 validation before a new release is created.
+
+## Public CI MiXCR Policy
+
+The release-grade biological analysis and canonical production execution use
+the exact validated MiXCR build:
+
+MiXCR v4.7.0-370-develop, revision `00eb424cfc`, with `repseqio.v6.3`.
+
+Public GitHub Actions use the official stable MiXCR 4.7.0 release, revision
+`976ba14139`, with `repseqio.v5.1`.
+
+The public CI run validates workflow wiring, process integration, file
+handoffs, output generation, formal QC, and provenance generation.
+
+Public CI is not represented as exact binary or biological parity with the
+release-grade production analysis.
+
+No private software-license credentials or vendor binaries are committed to
+the repository.

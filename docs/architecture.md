@@ -1,142 +1,136 @@
 # TCRFlowX Pipeline Architecture
 
-## High-Level Architecture
+## Production Workflow
 
-SRA Accessions
-      |
-      v
-DATA ACQUISITION
-      |
-      v
-Paired FASTQ
-      |
-      v
-RAW FASTQ QC
+TCRFlowX uses Nextflow DSL2 to process five paired-end targeted TCR-seq
+samples from raw FASTQ input through repertoire reconstruction, biological
+analysis, formal QC, and run provenance.
+
+```text
+metadata/samplesheet.csv
+        |
+        v
+Paired-end FASTQ
+        |
+        +-------------------------------+
+        |                               |
+        v                               v
+   QC_WORKFLOW                   REPERTOIRE_WORKFLOW
+        |                               |
+        v                               v
+     FastQC                           MiXCR
+        |                               |
+        v                               v
+     MultiQC                    TRB clonotype tables
+                                        |
+                                        v
+                              Repertoire analysis
+                                        |
+                         +--------------+--------------+
+                         |                             |
+                         v                             v
+                Diversity / clonality          V/J usage
+                longitudinal tracking          repertoire overlap
+                         |
+                         v
+                  Biological summary
+                         |
+                         v
+              Biological interpretation
+
+Additional production controls execute alongside the analytical workflow:
+
+MiXCR reports
+     |
+     v
+FORMAL_QC
+     |
+     +--> formal_qc_summary.tsv
+     +--> formal_qc_report.md
+
+Runtime parameters
+Git commit / Git state
+Software lock
+Input-integrity manifest
+     |
+     v
+PROVENANCE
+     |
+     +--> run_provenance.tsv
+     +--> run_provenance.md
+QC Workflow
+FASTQ
+  |
+  v
 FastQC
-      |
-      v
+  |
+  v
 MultiQC
-      |
-      v
-PREPROCESSING DECISION
-      |
-      +---- Good quality ----------> continue
-      |
-      +---- Adapter/quality issue -> fastp
-                                      |
-                                      v
-                                  FastQC
-                                      |
-                                      v
-TCR RECONSTRUCTION
+
+Raw reads proceed directly to MiXCR in the validated production workflow.
+
+No mandatory trimming or fastp preprocessing stage is part of the canonical
+pipeline.
+
+Repertoire Workflow
+FASTQ
+  |
+  v
 MiXCR
-      |
-      v
-V(D)J Assignment
-      |
-      v
-CDR3 Identification
-      |
-      v
-Clonotype Assembly
-      |
-      v
-Clonotype Tables
-      |
-      +----------------------+
-      |                      |
-      v                      v
-REPERTOIRE QC          REPERTOIRE ANALYSIS
-                             |
-                +------------+------------+
-                |            |            |
-                v            v            v
-             Diversity    Clonality    V/J Usage
-                |
-                v
-        CLONOTYPE TRACKING
-                |
-                v
-       LONGITUDINAL ANALYSIS
-                |
-        +-------+-------+
-        |               |
-        v               v
- PBMC trajectory    Tumor trajectory
-        |               |
-        +-------+-------+
-                |
-                v
-       TUMOR-PBMC OVERLAP
-                |
-                v
-          VALIDATION
- Authors' processed data
-                |
-                v
-           REPORTING
-                |
-                v
-       STREAMLIT DASHBOARD
-
-Workflow Engineering
-
-Nextflow DSL2 will orchestrate independent modules.
-
-Planned modules:
-
-SRA download
-FASTQ conversion
-FastQC raw
-fastp
-FastQC processed
-MultiQC
-MiXCR analysis
-clonotype export
-repertoire QC
-repertoire statistics
-clonotype tracking
-repertoire overlap
-benchmark comparison
-report generation
-Subworkflows
-
-Planned logical subworkflows:
-
-ACQUIRE_DATA
-
-SRA accession → validated paired FASTQ
-
-READ_QC
-
-FASTQ → FastQC → optional fastp → post-QC
-
-TCR_RECONSTRUCTION
-
-FASTQ → MiXCR → TCRβ clonotypes
-
+  |
+  v
+TRB clonotype tables
+  |
+  v
 REPERTOIRE_ANALYSIS
+  |
+  v
+BIOLOGICAL_SUMMARY
 
-Clonotypes → diversity/clonality/gene usage/overlap
+Repertoire analysis produces:
 
-VALIDATION
+productive richness
+Shannon diversity
+clonality
+top clonotypes
+TRBV/TRBJ usage
+longitudinal PBMC tracking
+longitudinal tumor tracking
+tumor-PBMC overlap
+pairwise repertoire similarity
+Reporting Layer
 
-TCRFlowX clonotypes → comparison with deposited study results
+Pipeline-derived results are consumed by the Streamlit dashboard.
 
-REPORTING
+The dashboard exposes:
 
-Pipeline outputs → figures/tables/dashboard-ready files
+sequencing and MiXCR QC
+formal QC classification
+repertoire metrics
+longitudinal clone behavior
+tumor-PBMC overlap
+benchmark results
+biological interpretation
+run provenance
+downloadable reports and tables
+
+The SQLite database and historical author-comparison benchmark are analytical
+and dashboard-layer artifacts. They are not claimed to be generated by the
+core production Nextflow workflow.
 
 Execution Model
 
-Primary execution:
+Validated execution:
 
 local WSL2 workstation
 
-Future compatibility:
+Configuration profiles:
 
-Docker
-SLURM/HPC
-other container-compatible environments
+docker: configuration validated
+slurm: configuration validated only; real SLURM execution not claimed
+azure: configuration validated only; real Azure execution not claimed
 
-Paid cloud compute is not required.
+The repository Dockerfile packages the Streamlit dashboard environment. It
+does not represent the complete biological pipeline runtime.
+
+Paid cloud compute is not required for the validated workflow.

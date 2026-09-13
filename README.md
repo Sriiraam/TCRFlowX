@@ -168,18 +168,21 @@ Generated workflow outputs, raw sequencing data, work directories, and local dat
 
 ## Requirements
 
-Core tools used during development:
+Validated core environment:
 
-- Nextflow 25.10+
-- Java 17
-- Python 3.12
-- R 4.3+
-- MiXCR 4.7
-- FastQC
-- MultiQC
+- Nextflow 25.10.4
+- OpenJDK 21.0.12
+- Python 3.12.3
+- R 4.3.3
+- MiXCR 4.7.0-370-develop (`00eb424cfc`) for the validated production analysis
+- FastQC 0.12.1
+- MultiQC 1.35
 - Docker
 - SQLite
-- Streamlit
+- Streamlit 1.62.0
+
+Exact versions are recorded in `metadata/software_versions.lock.tsv`
+and `docs/software_versions.md`.
 
 ---
 
@@ -224,10 +227,10 @@ nextflow run main.nf -profile local -resume
 
 | Profile | Purpose | Status |
 |---|---|---|
-| `local` | Local workstation execution | Validated |
-| `docker` | Docker-enabled execution profile | Configuration validated |
-| `slurm` | HPC execution using SLURM | Template provided; cluster-specific configuration required |
-| `azure` | Azure execution scaffold | Requires explicit cloud configuration |
+| `local` | Local workstation execution | Validated by end-to-end execution |
+| `docker` | Docker-enabled configuration profile | Configuration validated |
+| `slurm` | SLURM/HPC configuration profile | Configuration validated only; real cluster execution not yet performed |
+| `azure` | Azure configuration scaffold | Configuration validated only; real Azure execution not yet performed |
 
 Cloud credentials and paid resources are never automatically provisioned by this repository.
 
@@ -441,10 +444,10 @@ Run the complete test suite:
 pytest -v tests/
 ```
 
-Current validation:
+Current local validation:
 
 ```text
-9 tests passed
+8 passed, 1 skipped
 ```
 
 Tests verify:
@@ -469,6 +472,8 @@ GitHub Actions validates:
 - repository structure
 - Nextflow execution profile configuration
 - Docker dashboard image build
+- deterministic end-to-end workflow execution using tiny paired-end CI FASTQ fixtures
+- required biological, formal-QC, and provenance outputs
 
 Workflow:
 
@@ -585,11 +590,9 @@ TCRFlowX v0.1.0 establishes the core reproducible cancer immunogenomics workflow
 - Real-world SLURM/HPC execution validation
 - Azure Batch/cloud execution validation
 - Multi-patient and larger-cohort TCR-seq analysis
-- Small fixture datasets for automated integration testing
 - Expanded unit and workflow-level test coverage
 - Additional repertoire similarity and clone-tracking methods
 - Automated database generation as part of the Nextflow workflow
-- Public dashboard deployment
 - GitHub Releases and archival DOI integration
 
 See `CHANGELOG.md` for version history.
