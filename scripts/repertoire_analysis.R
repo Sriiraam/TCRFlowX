@@ -37,14 +37,34 @@ load_sample <- function(sample) {
     stringsAsFactors = FALSE
   )
 
+  extract_best_hit <- function(values) {
+    ifelse(
+      is.na(values) | values == "",
+      NA_character_,
+      sub("\\(.*$", "", sub(",.*$", "", values))
+    )
+  }
+
+  v_hit <- if ("bestVHit" %in% names(x)) {
+    x$bestVHit
+  } else {
+    extract_best_hit(x$allVHitsWithScore)
+  }
+
+  j_hit <- if ("bestJHit" %in% names(x)) {
+    x$bestJHit
+  } else {
+    extract_best_hit(x$allJHitsWithScore)
+  }
+
   x <- x %>%
     transmute(
       sample = sample,
       count = as.numeric(readCount),
       fraction = as.numeric(readFraction),
       cdr3aa = aaSeqCDR3,
-      v_gene = bestVHit,
-      j_gene = bestJHit
+      v_gene = v_hit,
+      j_gene = j_hit
     ) %>%
     filter(
       !is.na(cdr3aa),
