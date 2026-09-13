@@ -128,16 +128,9 @@ jobs:
 
           sudo cp /tmp/mixcr/mixcr.jar /usr/local/bin/mixcr.jar
 
-      - name: Configure MiXCR license
-        shell: bash
-        env:
-          MIXCR_LICENSE: ${{ secrets.MIXCR_LICENSE }}
-        run: |
-          mkdir -p ~/.mi/com.milaboratory.mixcr.cli.Main
-          printf '%s' "$MIXCR_LICENSE" > ~/.mi/com.milaboratory.mixcr.cli.Main/milicense
-          chmod 600 ~/.mi/com.milaboratory.mixcr.cli.Main/milicense
-
       - name: Verify MiXCR CI version
+        env:
+          MI_LICENSE: ${{ secrets.MI_LICENSE }}
         run: |
           mixcr --version
           mixcr --version | grep -F "MiXCR v4.7.0"
@@ -153,6 +146,7 @@ jobs:
       - name: Run complete workflow
         env:
           NXF_WORK: ${{ runner.temp }}/tcrflowx-work
+          MI_LICENSE: ${{ secrets.MI_LICENSE }}
         run: |
           nextflow run main.nf \
             -profile local \
